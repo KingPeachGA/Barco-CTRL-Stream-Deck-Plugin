@@ -1,19 +1,84 @@
 <!DOCTYPE html>
 <html>
-
-<head lang="en">
-    <title>Increment Counter Settings</title>
+<head>
+    <title>Barco CTRL Settings</title>
     <meta charset="utf-8" />
-    <script src="https://sdpi-components.dev/releases/v4/sdpi-components.js"></script>
+    <style>
+        body {
+            background-color: #2D2D2D;
+            font-family: sans-serif;
+            font-size: 11px;
+            color: #9A9A9A;
+        }
+        .sdpi-wrapper {
+            margin: 15px;
+        }
+        .sdpi-item {
+            margin-bottom: 10px;
+        }
+        .sdpi-item-label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        select, input[type="text"] {
+            width: 100%;
+            padding: 4px;
+            background-color: #4A4A4A;
+            color: #EFEFEF;
+            border: 1px solid #6A6A6A;
+            border-radius: 3px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
-
 <body>
-    <!--
-        Learn more about property inspector components at https://sdpi-components.dev/docs/components
-    -->
-    <sdpi-item label="Increment By">
-        <sdpi-range setting="incrementBy" min="1" max="5" step="1" default="1" showlabels></sdpi-range>
-    </sdpi-item>
-</body>
+    <div class="sdpi-wrapper">
+        <!-- Action Type Selection -->
+        <div class="sdpi-item">
+            <label class="sdpi-item-label" for="action-type-select">Action</label>
+            <select id="action-type-select" class="sdpi-item-value">
+                <option value="showSource">Show Source</option>
+                <option value="showComposition">Show Composition</option>
+                <option value="resetDesk">Reset Desk</option>
+                <option value="toggleLabels">Toggle Labels</option>
+            </select>
+        </div>
 
+        <!-- Workplace Selection -->
+        <div class="sdpi-item">
+            <label class="sdpi-item-label" for="workplace-select">Target Workplace</label>
+            <select id="workplace-select" class="sdpi-item-value">
+                <option value="">Loading workplaces...</option>
+            </select>
+        </div>
+
+        <!-- Display Selection (for multi-display desks) -->
+        <div class="sdpi-item hidden" id="display-select-container">
+            <label class="sdpi-item-label" for="display-select">Target Display</label>
+            <select id="display-select" class="sdpi-item-value"></select>
+        </div>
+
+        <!-- Source Selection -->
+        <div class="sdpi-item" id="source-select-container">
+            <label class="sdpi-item-label" for="source-select">Source</label>
+            <select id="source-select" class="sdpi-item-value">
+                <option value="">Loading sources...</option>
+            </select>
+        </div>
+
+        <!-- Composition Selection -->
+        <div class="sdpi-item hidden" id="composition-select-container">
+            <label class="sdpi-item-label" for="composition-select">Composition</label>
+            <select id="composition-select" class="sdpi-item-value">
+                <option value="">Loading compositions...</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- This path is now correct relative to the location of increment-counter.html -->
+    <script src="js/property-inspector.js"></script>
+</body>
 </html>
